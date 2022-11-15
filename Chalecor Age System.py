@@ -64,6 +64,7 @@ def FindDayFromNumberedDayInYear(d, y):
 # --------- MENU ---------
 
 def Menu():
+    print("[Menu]")
     print("Task 1 => Give Numbered Day of Month & Get Day")
     print("Task 2 => Give 0th & 3rd Pull Get 1st Pull")
     print("Task 3 => Give 1st & 3rd Pull Get 0th Pull")
@@ -156,18 +157,19 @@ def TravelDays(numberOfDays, fromDay, direction): #-1 direction means backward #
 def AskDay():
     m = GetMonth()
     d = GetNumberedDay(m)
+    print(d)
     y = GetYear()
     return FindDayFromNumberedDayInMonth(m, d, y)
 
 def GetMonth():
     print("1. Norvexus\n2. Exerlym\n3. Orylwen\n4. Terxangth")
-    inp = input("Choose Month")
+    inp = input("\nChoose Month")
     if(inp.isdigit()==False):
         print("\nFailed... Tip: If you want to choose Norvexus just enter 1... for Exerlym enter 2... and so on...\n")
-        GetMonth()
+        return GetMonth()
     if(int(inp) not in [1,2,3,4]):
        print("\nFailed... Tip: If you want to choose Norvexus just enter 1... for Exerlym enter 2... and so on...\n")
-       GetMonth()
+       return GetMonth()
     print("\n")
     return months[int(inp)-1]
 
@@ -175,10 +177,10 @@ def GetNumberedDay(m):
     inp = input("Enter Numbered Day In Month")
     if(inp.isdigit()==False):
         print("\nFailed... Tip: If you want to choose 1st just enter 1... for 2nd just enter 2... and so on...\n")
-        GetNumberedDay(m)
+        return GetNumberedDay(m)
     if(int(inp)>numberOfDaysInFourMonths[months.index(m)]):
         print(f"\nFailed... Month {m} range is 1 to {numberOfDaysInFourMonths[months.index(m)]}\n")
-        GetNumberedDay(m)
+        return GetNumberedDay(m)
     print("\n")
     return int(inp)
         
